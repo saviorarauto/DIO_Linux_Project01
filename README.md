@@ -43,47 +43,7 @@ This is my first Bash script for automating the creation of repositories, groups
 - Os usuários de cada grupo terão permissão total dentro de seu respectivo diretório.
 - Os usuários não poderão ter permissão de leitura, escrita e execução em diretórios de departamentos que não pertencem.
 
-## 3. Script Bash
-
-```bash
-#!/bin/bash
-# Criação de diretórios
-mkdir -p /publico
-mkdir -p /adm
-mkdir -p /ven
-mkdir -p /sec
-
-# Criação de grupos
-groupadd GRP_ADM
-groupadd GRP_VEN
-groupadd GRP_SEC
-
-# Criação de usuários e adição aos grupos
-useradd carlos -m -s /bin/bash -G GRP_ADM
-useradd maria -m -s /bin/bash -G GRP_ADM
-useradd joao -m -s /bin/bash -G GRP_ADM
-
-useradd debora -m -s /bin/bash -G GRP_VEN
-useradd sebastiana -m -s /bin/bash -G GRP_VEN
-useradd roberto -m -s /bin/bash -G GRP_VEN
-
-useradd josefina -m -s /bin/bash -G GRP_SEC
-useradd amanda -m -s /bin/bash -G GRP_SEC
-useradd rogerio -m -s /bin/bash -G GRP_SEC
-
-# Definição de permissões
-chown -R root:GRP_ADM /adm
-chown -R root:GRP_VEN /ven
-chown -R root:GRP_SEC /sec
-chown -R root:GRP_ADM /publico
-
-chmod -R 770 /adm
-chmod -R 770 /ven
-chmod -R 770 /sec
-chmod -R 777 /publico
-```
-
-## 4. Explicação dos Comandos
+## 3. Explicação dos Comandos
 
 ### Comando `useradd`
 
@@ -109,7 +69,7 @@ Usado para alterar permissões de arquivos/diretórios:
 - `777`: Permissões para o diretório `/publico`:
   - `7` (proprietário, grupo e outros): leitura, escrita e execução.
 
-## 5. Atendimento às Definições
+## 4. Atendimento às Definições
 
 1. **Provisionamento em Bash Script:** ✅ Sim, o script é um arquivo Bash.
 2. **Dono dos diretórios como `root`**: ✅ Sim, definido via `chown -R root:GRP_*`.
